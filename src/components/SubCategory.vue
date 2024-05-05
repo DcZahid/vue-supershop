@@ -66,7 +66,7 @@ export default {
         return {
             sublist: [],
             mainlist: [],
-            catname: '',
+            // catname: '',
             name: '',
             category_id: 0,
             id: 0
@@ -83,24 +83,25 @@ export default {
                 })
         },
         getCategory() {
-            axios.get('http://127.0.0.1:8000/api/subcategory')
+            axios.get('http://127.0.0.1:8000/api/sub_category')
                 .then((res) => {
                     this.sublist = res.data.data
                     // console.log(res.data.data)
                 })
         },
         save() {
-            axios.post("http://127.0.0.1:8000/api/subcategory/", { name: this.name, category_id: this.catname })
+            axios.post("http://127.0.0.1:8000/api/sub_category/", { name: this.name, category_id: this.category_id })
                 .then((response) => {
                     console.log(response)
                     this.name = '';
-                    this.catname = '';
+                    this.category_id = '';
+                    this.getCategory()
 
                 });
         },
         showCat(id) {
             this.id = id
-            axios.get("http://127.0.0.1:8000/api/subcategory/" + id + '/edit')
+            axios.get("http://127.0.0.1:8000/api/sub_category/" + id + '/edit')
                 .then((response) => {
                     console.log(response);
                     const d = response.data.data
@@ -111,7 +112,7 @@ export default {
                 });
         },
         updateCate() {
-            axios.put("http://127.0.0.1:8000/api/subcategory/" + this.id,
+            axios.put("http://127.0.0.1:8000/api/sub_category/" + this.id,
                 {
                     name: this.name,
                     category_id: this.catname
@@ -128,7 +129,7 @@ export default {
                 });
         },
         deleteCate(id) {
-            axios.delete("http://127.0.0.1:8000/api/subcategory/" + id)
+            axios.delete("http://127.0.0.1:8000/api/sub_category/" + id)
                 .then(() => {
                     console.log("Category deleted successfully.");
                     this.getCategory()

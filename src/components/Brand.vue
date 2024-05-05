@@ -8,7 +8,7 @@
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Brand's Name</label>
                         <input type="text" class="form-control" v-model="name" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                            aria-describedby="emailHelp" required>
 
                     </div>
                     <button v-if="id == 0" @click="save()" class="btn btn-primary mt-2 active">Save</button>

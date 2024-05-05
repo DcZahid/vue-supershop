@@ -1,7 +1,7 @@
 <script setup>
-import AsideBar from '@/components/AsideBar.vue';
-import MainFoot from '@/components/MainFoot.vue';
-import MainHead from '@/components/MainHead.vue';
+import AsideBar from '@/components/layouts/AsideBar.vue';
+import MainFoot from '@/components/layouts/MainFoot.vue';
+import MainHead from '@/components/layouts/MainHead.vue';
 
 
 </script>
