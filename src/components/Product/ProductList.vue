@@ -25,8 +25,8 @@
                                 <td>{{ d.brand.name }}</td>
                                 <td>{{ d.name }}</td>
                                 <td>
-                                    <button @click="showCat(d.id)" class="btn btn-primary">Edit</button>
-                                    <button @click="deleteCate(d.id)" class="btn btn-danger">Delete</button>
+                                    <button @click="showProduct(d.id)" class="btn btn-primary">Edit</button>
+                                    <button @click="deleteProduct(d.id)" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
 
@@ -41,6 +41,7 @@
 </template>
 <script>
 import axios from 'axios';
+// import EditProduct from './EditProduct.vue';
 export default {
     data() {
         return {
@@ -50,6 +51,7 @@ export default {
             sub_category:'',
             sub_category_id:'',
             category_id:'',
+            id:0,
         }
     },
     methods: {
@@ -59,6 +61,19 @@ export default {
                     this.productList = res.data.data
                     console.log(res.data.data)
                 });
+        },
+        showProduct(id){
+            this.$router.push({name:'editproduct',params: { id: id }})
+        },
+        deleteProduct(id){
+            axios.delete("http://127.0.0.1:8000/api/product/" + id)
+            .then(() => {
+                console.log("Category deleted successfully.");
+                this.getProduct()
+            })
+            .catch((error)=>{
+                console.error("Error deleting category:",error);
+            });
         }
     },
     mounted() {

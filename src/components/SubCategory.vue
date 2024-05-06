@@ -106,7 +106,7 @@ export default {
                     console.log(response);
                     const d = response.data.data
                     this.name = d.name
-                    this.category_id = response.data.data.category_id
+                    this.category_id = d.category_id
                     this.getCategory()
 
                 });
@@ -115,13 +115,13 @@ export default {
             axios.put("http://127.0.0.1:8000/api/sub_category/" + this.id,
                 {
                     name: this.name,
-                    category_id: this.catname
+                    category_id: this.category_id
                 })
                 .then((response) => {
                     console.log(response);
                     this.id = 0;
                     this.name = "";
-                    this.catname = "";
+                    this.category_id = "";
                     this.getCategory();
                 })
                 .catch((error) => {

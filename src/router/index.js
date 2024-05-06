@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import Dash from "@/views/adminPanel/Dash.vue";
+import ExpenseCategory from "@/components/ExpenseCategory.vue";
+import Expense from "@/components/Expense.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,9 +48,19 @@ const router = createRouter({
           component: () => import("../components/Product/AddProduct.vue"),
         },
         {
-          path: "/editproduct",
+          path: "/editproduct/:id",
           name: "editproduct",
           component: () => import("../components/Product/EditProduct.vue"),
+        },
+        {
+          path: "/expensecategory",
+          name: "expncat",
+          component: ExpenseCategory,
+        },
+        {
+          path: "/expense",
+          name: "expn",
+          component: Expense,
         },
         
       ],
