@@ -36,7 +36,7 @@
                             <tr>
                                 <td scope="row">{{ i + 1 }}</td>
                                 <td>{{ d.name }}</td>
-                                <td>
+                                <td width='150px'>
                                     <button @click="editExpensecat(d.id)" class="btn btn-primary">Edit</button>
                                     <button @click="deleteExpensecat(d.id)" class="btn btn-danger">Delete</button>
                                 </td>

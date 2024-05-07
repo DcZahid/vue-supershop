@@ -36,7 +36,7 @@
                                 <th scope="col">SL</th>
                                 <th scope="col">Category Name</th>
                                 <th scope="col">Sub Category Name</th>
-                                <th style="width: 70px;" scope="col">Action</th>
+                                <th style="width: 80px;" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody v-for="(d, i) in sublist" :key="i">
@@ -44,7 +44,7 @@
                                 <td scope="row">{{ i + 1 }}</td>
                                 <td>{{ d.category.name }}</td>
                                 <td>{{ d.name }}</td>
-                                <td>
+                                <td width='150px'>
                                     <button @click="showCat(d.id)" class="btn btn-primary">Edit</button>
                                     <button @click="deleteCate(d.id)" class="btn btn-danger">Delete</button>
                                 </td>

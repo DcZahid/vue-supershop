@@ -47,7 +47,7 @@
                                 <td>{{d.expense_category.name  }}</td>
                                 <td>{{ d.amount }}</td>
                                 <td>{{ d.date }}</td>
-                                <td>
+                                <td width='150px'>
                                     <button @click="editExpense(d.id)" class="btn btn-primary">Edit</button>
                                     <button @click="deleteExpense(d.id)" class="btn btn-danger">Delete</button>
                                 </td>

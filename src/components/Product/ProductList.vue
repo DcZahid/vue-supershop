@@ -14,7 +14,7 @@
                                 <th scope="col">Sub Category Name</th>
                                 <th scope="col">Brand Name</th>
                                 <th scope="col">Product Name</th>
-                                <th style="width: 70px;" scope="col">Action</th>
+                                <th  scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody v-for="(d, i) in productList" :key="i">
@@ -24,7 +24,7 @@
                                 <td>{{ d.sub_category.name }}</td>
                                 <td>{{ d.brand.name }}</td>
                                 <td>{{ d.name }}</td>
-                                <td>
+                                <td width='150px'>
                                     <button @click="showProduct(d.id)" class="btn btn-primary">Edit</button>
                                     <button @click="deleteProduct(d.id)" class="btn btn-danger">Delete</button>
                                 </td>
