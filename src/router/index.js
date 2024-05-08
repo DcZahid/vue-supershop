@@ -3,6 +3,9 @@ import HomeView from "../views/HomeView.vue";
 import Dash from "@/views/adminPanel/Dash.vue";
 import ExpenseCategory from "@/components/ExpenseCategory.vue";
 import Expense from "@/components/Expense.vue";
+import EmployeeList from "@/components/Employee/EmployeeList.vue";
+import AddEmployee from "@/components/Employee/AddEmployee.vue";
+import EditEmployee from "@/components/Employee/EditEmployee.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -61,6 +64,21 @@ const router = createRouter({
           path: "/expense",
           name: "expn",
           component: Expense,
+        },
+        {
+          path: "/employee",
+          name: "employee",
+          component: EmployeeList,
+        },
+        {
+          path: "/addEmployee",
+          name: "addEmployee",
+          component: AddEmployee,
+        },
+        {
+          path: "/editemployee/:id",
+          name: "editemployee",
+          component: EditEmployee,
         },
         
       ],

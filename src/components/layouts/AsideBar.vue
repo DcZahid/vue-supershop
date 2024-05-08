@@ -31,6 +31,8 @@
                                 class="fa fa-th me-2"></i>Brand</router-link>
                         <router-link :to="{ name: 'product' }" class="nav-item nav-link"><i
                                 class="fa fa-th me-2"></i>Product List</router-link>
+                        <router-link :to="{ name: 'employee' }" class="nav-item nav-link"><i
+                                class="fa fa-th me-2"></i>Employee List</router-link>
                         <!-- <router-link :to="{ name: 'product' }" class="dropdown-item">Product List</router-link> -->
                         <router-link :to="{ name: 'content' }" class="dropdown-item">Buttons</router-link>
                         <a href="typography.html" class="dropdown-item">Typography</a>

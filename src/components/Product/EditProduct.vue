@@ -47,24 +47,24 @@ export default {
             sub_category_id: 0,
             brand_id: 0,
             id:this.$route.params.id,
-            url:"http://127.0.0.1:8000/api/product",
+            url:"http://127.0.0.1:8000/api/zahid/product",
         }
     },
     methods: {
         getCategory() {
-            axios.get("http://127.0.0.1:8000/api/category")
+            axios.get("http://127.0.0.1:8000/api/zahid/category")
                 .then((res) => {
                     this.categoryList = res.data.data
                 })
         },
         getSubCategory() {
-            axios.get("http://127.0.0.1:8000/api/sub_category")
+            axios.get("http://127.0.0.1:8000/api/zahid/sub_category")
                 .then((res) => {
                     this.sub_categoryList = res.data.data
                 })
         },
         getBrand() {
-            axios.get("http://127.0.0.1:8000/api/brand")
+            axios.get("http://127.0.0.1:8000/api/zahid/brand")
                 .then((res) => {
                     this.brandList = res.data.data
                     // console.log(res.data.data)

@@ -56,7 +56,7 @@ export default {
     },
     methods: {
         getProduct() {
-            axios.get('http://127.0.0.1:8000/api/product')
+            axios.get('http://127.0.0.1:8000/api/zahid/product')
                 .then((res) => {
                     this.productList = res.data.data
                     console.log(res.data.data)
@@ -66,7 +66,7 @@ export default {
             this.$router.push({name:'editproduct',params: { id: id }})
         },
         deleteProduct(id){
-            axios.delete("http://127.0.0.1:8000/api/product/" + id)
+            axios.delete("http://127.0.0.1:8000/api/zahid/product/" + id)
             .then(() => {
                 console.log("Category deleted successfully.");
                 this.getProduct()

@@ -65,14 +65,14 @@ export default {
     },
     methods: {
         getBrand() {
-            axios.get('http://127.0.0.1:8000/api/brand')
+            axios.get('http://127.0.0.1:8000/api/zahid/brand')
                 .then((res) => {
                     this.list = res.data.data
                     console.log(res.data.data)
                 })
         },
         save() {
-            axios.post("http://127.0.0.1:8000/api/brand/", { name: this.name })
+            axios.post("http://127.0.0.1:8000/api/zahid/brand/", { name: this.name })
                 .then((response) => {
                     this.name
                     this.getBrand()
@@ -81,7 +81,7 @@ export default {
                 });
         },
         showBrand(id) {
-            axios.get("http://127.0.0.1:8000/api/brand/" + id + '/edit')
+            axios.get("http://127.0.0.1:8000/api/zahid/brand/" + id + '/edit')
                 .then((response) => {
                     const d = response.data.data
                     this.name = d.name
@@ -90,7 +90,7 @@ export default {
                 });
         },
         updateBrand() {
-            axios.put("http://127.0.0.1:8000/api/brand/" + this.id, { name: this.name })
+            axios.put("http://127.0.0.1:8000/api/zahid/brand/" + this.id, { name: this.name })
                 .then((response) => {
                     console.log(response.status, response.data);
                     this.id = 0;
@@ -102,7 +102,7 @@ export default {
                 });
         },
         deleteBrand(id) {
-            axios.delete("http://127.0.0.1:8000/api/brand/" + id)
+            axios.delete("http://127.0.0.1:8000/api/zahid/brand/" + id)
             .then(() => {
                 console.log("Category deleted successfully.");
                 this.getBrand()

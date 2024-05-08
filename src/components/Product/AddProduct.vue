@@ -50,28 +50,28 @@ export default {
     },
     methods: {
         getCategory() {
-            axios.get("http://127.0.0.1:8000/api/category")
+            axios.get("http://127.0.0.1:8000/api/zahid/category")
                 .then((res) => {
                     this.categoryList = res.data.data
                     // console.log(res.data.data)
                 })
         },
         getSubCategory() {
-            axios.get("http://127.0.0.1:8000/api/sub_category")
+            axios.get("http://127.0.0.1:8000/api/zahid/sub_category")
                 .then((res) => {
                     this.sub_categoryList = res.data.data
                     // console.log(res.data.data)
                 })
         },
         getBrand() {
-            axios.get("http://127.0.0.1:8000/api/brand")
+            axios.get("http://127.0.0.1:8000/api/zahid/brand")
                 .then((res) => {
                     this.brandList = res.data.data
                     // console.log(res.data.data)
                 })
         },
         save() {
-            axios.post("http://127.0.0.1:8000/api/product", { name: this.name, category_id: this.category_id, sub_category_id: this.sub_category_id, brand_id: this.brand_id })
+            axios.post("http://127.0.0.1:8000/api/zahid/product", { name: this.name, category_id: this.category_id, sub_category_id: this.sub_category_id, brand_id: this.brand_id })
                 .then((response) => {
                     this.category_id = '',
                         this.sub_category_id = '',
