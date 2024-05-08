@@ -25,7 +25,7 @@
                                 <td>{{ d.brand.name }}</td>
                                 <td>{{ d.name }}</td>
                                 <td>
-                                    <button @click="showProduct(d.id)" class="btn btn-primary">Edit</button>
+                                    <button @click="showProduct(d.id)" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></button>
                                     <button @click="deleteProduct(d.id)" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>

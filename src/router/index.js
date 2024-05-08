@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import Dash from "@/views/adminPanel/Dash.vue";
 import ExpenseCategory from "@/components/ExpenseCategory.vue";
 import Expense from "@/components/Expense.vue";
+import Unit from "@/components/Unit.vue";
+import Payment from "@/components/Payment.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -61,6 +63,16 @@ const router = createRouter({
           path: "/expense",
           name: "expn",
           component: Expense,
+        },
+        {
+          path: "/unit",
+          name: "unit",
+          component: Unit,
+        },
+        {
+          path: "/payment",
+          name: "payment",
+          component: Payment,
         },
         
       ],

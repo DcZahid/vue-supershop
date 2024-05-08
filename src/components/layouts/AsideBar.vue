@@ -2,7 +2,7 @@
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>MRM POS</h3>
+                <h3 class="text-primary"><marquee>MRM POS</marquee></h3>
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
@@ -33,6 +33,8 @@
                                 class="fa fa-th me-2"></i>Product List</router-link>
                         <!-- <router-link :to="{ name: 'product' }" class="dropdown-item">Product List</router-link> -->
                         <router-link :to="{ name: 'content' }" class="dropdown-item">Buttons</router-link>
+                        <router-link :to="{ name: 'unit' }" class="dropdown-item">Unit</router-link>
+                        <router-link :to="{ name: 'payment' }" class="dropdown-item">Payment</router-link>
                         <a href="typography.html" class="dropdown-item">Typography</a>
                         <a href="element.html" class="dropdown-item">Other Elements</a>
                     </div>
