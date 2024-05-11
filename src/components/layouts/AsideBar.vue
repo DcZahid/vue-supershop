@@ -2,7 +2,9 @@
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
             <a href="index.html" class="navbar-brand mx-4 mb-3">
-                <h3 class="text-primary"><marquee><i class="fa fa-hashtag me-2"></i>MRM POS</marquee></h3>
+                <h3 class="text-primary">
+                    <marquee><i class="fa fa-hashtag me-2"></i>MRM POS</marquee>
+                </h3>
             </a>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
@@ -31,8 +33,7 @@
                                 class="fa fa-th me-2"></i>Brand</router-link>
                         <router-link :to="{ name: 'product' }" class="nav-item nav-link"><i
                                 class="fa fa-th me-2"></i>Product List</router-link>
-                        <router-link :to="{ name: 'employee' }" class="nav-item nav-link"><i
-                                class="fa fa-th me-2"></i>Employee List</router-link>
+
                         <!-- <router-link :to="{ name: 'product' }" class="dropdown-item">Product List</router-link> -->
                         <router-link :to="{ name: 'content' }" class="dropdown-item">Buttons</router-link>
                         <a href="typography.html" class="dropdown-item">Typography</a>
@@ -47,10 +48,15 @@
                                 class="fa fa-th me-2"></i>Expense Category</router-link>
                         <router-link :to="{ name: 'expn' }" class="nav-item nav-link"><i
                                 class="fa fa-th me-2"></i>Expense</router-link>
-                       
+
                     </div>
                 </div>
-
+                <router-link :to="{ name: 'employee' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Employee
+                    List</router-link>
+                <router-link :to="{ name: 'supplier' }" class="nav-item nav-link"><i
+                        class="fa fa-keyboard me-2"></i>Supplier List</router-link>
+                <router-link :to="{ name: 'customer' }" class="nav-item nav-link"><i
+                        class="fa fa-keyboard me-2"></i>Customer List</router-link>
                 <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                 <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>

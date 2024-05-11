@@ -1,11 +1,23 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+
 import Dash from "@/views/adminPanel/Dash.vue";
+
 import ExpenseCategory from "@/components/ExpenseCategory.vue";
+
 import Expense from "@/components/Expense.vue";
+
 import EmployeeList from "@/components/Employee/EmployeeList.vue";
 import AddEmployee from "@/components/Employee/AddEmployee.vue";
 import EditEmployee from "@/components/Employee/EditEmployee.vue";
+
+import SupplierList from "@/components/supplier/SupplierList.vue";
+import AddSupplier from "@/components/supplier/AddSupplier.vue";
+import EditSupplier from "@/components/supplier/EditSupplier.vue";
+
+import CustomerList from "@/components/customer/CustomerList.vue";
+import AddCustomer from "@/components/customer/AddCustomer.vue";
+import EditCustomer from "@/components/customer/EditCustomer.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -79,6 +91,36 @@ const router = createRouter({
           path: "/editemployee/:id",
           name: "editemployee",
           component: EditEmployee,
+        },
+        {
+          path: "/supplier",
+          name: "supplier",
+          component: SupplierList,
+        },
+        {
+          path: "/addsupplier",
+          name: "addsupplier",
+          component: AddSupplier,
+        },
+        {
+          path: "/editsupplier/:id",
+          name: "editsupplier",
+          component: EditSupplier,
+        },
+        {
+          path: "/customer",
+          name: "customer",
+          component: CustomerList,
+        },
+        {
+          path: "/addcustomer",
+          name: "addcustomer",
+          component: AddCustomer,
+        },
+        {
+          path: "/editcustomer/:id",
+          name: "editcustomer",
+          component: EditCustomer,
         },
         
       ],

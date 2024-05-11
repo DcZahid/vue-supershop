@@ -7,8 +7,12 @@
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Category's Name</label>
-                        <input type="text" class="form-control" v-model="name" id="exampleInputEmail1"
+                        <input type="text" v-validate="'email'" class="form-control" v-model="name" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
+                            <p v-if="nameError" class="error" style="color: crimson;"> 
+                                {{ nameError }}
+                            </p>
+                            
 
                     </div>
                     <button v-if="id == 0" @click="save()" class="btn btn-primary mt-2 active">Save</button>
@@ -61,6 +65,16 @@ export default {
             list: [],
             name: '',
             id: 0
+        }
+    },
+    
+    watch:{ 
+        name:function(){ 
+            if(this.name.length >5){ 
+                this.nameError="at least 5 cherecter";
+            } else { 
+                this.nameError="";
+            }
         }
     },
     methods: {
