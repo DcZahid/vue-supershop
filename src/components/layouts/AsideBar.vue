@@ -51,6 +51,9 @@
 
                     </div>
                 </div>
+                <router-link :to="{ name: 'unit' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Unit List
+                    List</router-link>
+                <router-link :to="{ name: 'payment' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Payment List</router-link>
                 <router-link :to="{ name: 'employee' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Employee
                     List</router-link>
                 <router-link :to="{ name: 'supplier' }" class="nav-item nav-link"><i
