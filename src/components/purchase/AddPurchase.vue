@@ -1,0 +1,196 @@
+<template>
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <h6 class="mb-4">Sub Category Form</h6>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Invoice</label>
+                        <input type="text" class="form-control" v-model="invoice_id" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+
+                        <label for="exampleInputEmail1" class="form-label">Supplier Name</label>
+                        <select v-model="supplier_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Supplier Name</option>
+                            <option v-for="(d, i) in supplierList" :key="i" :value="d.id">{{ d.teamable.name }}</option>
+                        </select>
+
+                        <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                        <select v-model="category_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Category Name</option>
+                            <option v-for="(d, i) in categoryList" :key="i" :value="d.id">{{ d.name }}</option>
+                        </select>
+
+                        <label for="exampleInputEmail1" class="form-label">Sub Category Name</label>
+                        <select v-model="subCategory_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Sub Category Name</option>
+                            <option v-for="(d, i) in sub_categoryList" :key="i" :value="d.id">{{ d.name }}</option>
+                        </select>
+                        <label for="exampleInputEmail1" class="form-label">Brand Name</label>
+                        <select v-model="brand_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Brand Name</option>
+                            <option v-for="(d, i) in brandList" :key="i" :value="d.id">{{ d.name }}</option>
+                        </select>
+
+                        <label for="exampleInputEmail1" class="form-label">Product Name</label>
+                        <select v-model="product_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Product Name</option>
+                            <option v-for="(d, i) in productList" :key="i" :value="d.id">{{ d.name }}</option>
+                        </select>
+
+                        <label for="exampleInputEmail1" class="form-label">Unit Name</label>
+                        <select v-model="unit_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Unit Name</option>
+                            <option v-for="(d, i) in unitList" :key="i" :value="d.id">{{ d.name }}</option>
+                        </select>
+
+                        <label for="exampleInputEmail1" class="form-label">Price</label>
+                        <input type="number" class="form-control" v-model="price" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+
+                        <label for="exampleInputEmail1" class="form-label">Sale Price</label>
+                        <input type="number" class="form-control" v-model="sale_price" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+
+                        <label for="exampleInputEmail1" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" v-model="quantity" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+
+                        <!-- <label for="exampleInputEmail1" class="form-label">Total Price</label>
+                        <input type="number" class="form-control" v-model="total_price" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"> -->
+
+                        <label for="exampleInputEmail1" class="form-label">Payment Method</label>
+                        <select v-model="payment_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose Payment Name</option>
+                            <option v-for="(d, i) in paymentList" :key="i" :value="d.id">{{ d.method }}</option>
+                        </select>
+
+                        <label for="exampleInputEmail1" class="form-label">Date</label>
+                        <input type="date" class="form-control" v-model="date" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                    </div>
+                    <button @click="save()" class="btn btn-primary mt-2 active">Save</button>
+                    <!-- <button v-else @click="updateCate" class="btn btn-primary">Update</button>  -->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
+<script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            supplierList: [],
+            categoryList: [],
+            sub_categoryList: [],
+            brandList: [],
+            productList: [],
+            paymentList: [],
+            unitList: [],
+            invoice_id: '',
+            supplier_id: 0,
+            category_id: 0,
+            subCategory_id: 0,
+            payment_id: 0,
+            brand_id: 0,
+            product_id: 0,
+            unit_id: 0,
+            price: '',
+            quantity: '',
+            // total_price: '',
+            date: '',
+            sale_price:'',
+        }
+    },
+    methods: {
+        getInvoice() {
+            const a = new Date().getTime().toString().slice(7);
+            this.invoice_id="INV:"+a
+        },
+        getSupplier() {
+            axios.get("http://127.0.0.1:8000/api/minhaj/supplier")
+                .then((res) => {
+                    this.supplierList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        getCategory() {
+            axios.get("http://127.0.0.1:8000/api/zahid/category")
+                .then((res) => {
+                    this.categoryList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        getSubCategory() {
+            axios.get("http://127.0.0.1:8000/api/zahid/sub_category")
+                .then((res) => {
+                    this.sub_categoryList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        getBrand() {
+            axios.get("http://127.0.0.1:8000/api/zahid/brand")
+                .then((res) => {
+                    this.brandList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        getProduct() {
+            axios.get("http://127.0.0.1:8000/api/zahid/product")
+                .then((res) => {
+                    this.productList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        getUnit() {
+            axios.get("http://127.0.0.1:8000/api/rubon/unit")
+                .then((res) => {
+                    this.unitList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        getPayment() {
+            axios.get("http://127.0.0.1:8000/api/rubon/payment")
+                .then((res) => {
+                    this.paymentList = res.data.data
+                    // console.log(res.data.data)
+                })
+        },
+        save() {
+            axios.post("http://127.0.0.1:8000/api/zahid/purchase", { invoice_id: this.invoice_id, supplier_id:this.supplier_id,category_id:this.category_id,subCategory_id:this.subCategory_id,brand_id:this.brand_id,product_id:this.product_id,unit_id:this.unit_id,price:this.price,sale_price:this.sale_price,quantity:this.quantity,payment_id:this.payment_id,date:this.date})
+                .then((response) => {
+                    this.category_id = '',
+                        this.subCategory_id = '',
+                        this.brand_id = '',
+                        this.invoice_id='',
+                        this.supplier_id='',
+                        this.unit_id='',
+                        this.price='',
+                        this.sale_price='',
+                        this.quantity='',
+                        // this.total_price='',
+                        this.payment_id='',
+                        this.date='',
+                        this.product_id='',
+                        console.log(response);
+                    this.$router.push({ name: 'purchase' })
+                });
+        },
+    },
+    mounted() {
+        this.getCategory()
+        this.getSubCategory()
+        this.getBrand()
+        this.getProduct()
+        this.getSupplier()
+        this.getInvoice()
+        this.getUnit()
+        this.getPayment()
+    }
+}
+</script>

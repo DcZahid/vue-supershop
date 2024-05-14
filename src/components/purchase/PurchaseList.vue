@@ -3,7 +3,7 @@
     <div class="container-fluid pt-4 px-4 vh-100">
         <div class="row g-4 vh-100">
             <div class="col-12">
-                <router-link class="btn btn-primary" :to="{name:'addEmployee'}">add Purchase</router-link>
+                <router-link class="btn btn-primary" :to="{name:'addpurchase'}">add Purchase</router-link>
                 <div class="bg-light rounded h-100 p-4">
                     <h6 class="mb-4">Purchase List</h6>
                     <table class="table table-hover">
@@ -29,11 +29,18 @@
                             <tr>
                                 <td scope="row">{{ i + 1 }}</td>
                                 <td>{{ d.invoice_id }}</td>
-                                <td>{{ d.position }}</td>
-                                <td>{{ d.joining_date}}</td>
-                                <td>{{ d.teamable.email }}</td>
-                                <td>{{ d.teamable.phone }}</td>
-                                <td>{{ d.teamable.address }}</td>
+                                <td>{{ d.supplier.teamable.name }}</td>
+                                <td>{{ d.product.category.name}}</td>
+                                <td>{{ d.product.sub_category.name}}</td>
+                                <td>{{ d.product.brand.name}}</td>
+                                <td>{{ d.product.name }}</td>
+                                <td>{{ d.unit.name }}</td>
+                                <td>{{ d.price }}</td>
+                                <td>{{ d.quantity }}</td>
+                                <td>{{( d.quantity * d.price) }}</td>
+                                <!-- <td>{{ d.total_price }}</td> -->
+                                <td>{{ d.payment.method }}</td>
+                                <td>{{ d.date }}</td>
                                 <td width='150px'>
                                     <button @click="showPurchase(d.id)" class="btn btn-primary">Edit</button>
                                     <button @click="deleteEmployee(d.id)" class="btn btn-danger">Delete</button>

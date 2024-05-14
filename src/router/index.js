@@ -20,6 +20,8 @@ import AddCustomer from "@/components/customer/AddCustomer.vue";
 import EditCustomer from "@/components/customer/EditCustomer.vue";
 import Unit from "@/components/Unit.vue";
 import Payment from "@/components/Payment.vue";
+import PurchaseList from "@/components/purchase/PurchaseList.vue";
+import AddPurchase from "@/components/purchase/AddPurchase.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -133,6 +135,16 @@ const router = createRouter({
           path: "/payment",
           name: "payment",
           component: Payment,
+        },
+        {
+          path: "/purchase",
+          name: "purchase",
+          component: PurchaseList,
+        },
+        {
+          path: "/addpurchase",
+          name: "addpurchase",
+          component: AddPurchase,
         },
         
       ],

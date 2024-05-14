@@ -9,9 +9,6 @@
                         <label for="exampleInputEmail1" class="form-label">Category's Name</label>
                         <input type="text" v-validate="'email'" class="form-control" v-model="name" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
-                            <p v-if="nameError" class="error" style="color: crimson;"> 
-                                {{ nameError }}
-                            </p>
                             
 
                     </div>
@@ -65,16 +62,6 @@ export default {
             list: [],
             name: '',
             id: 0
-        }
-    },
-    
-    watch:{ 
-        name:function(){ 
-            if(this.name.length >5){ 
-                this.nameError="at least 5 cherecter";
-            } else { 
-                this.nameError="";
-            }
         }
     },
     methods: {
