@@ -3,15 +3,15 @@
     <div class="container-fluid pt-4 px-4 vh-100">
         <div class="row g-4 vh-100">
             <div class="col-12">
-                <router-link class="btn btn-primary" :to="{name:'addpurchase'}">add Purchase</router-link>
+                <router-link class="btn btn-primary" :to="{name:'addsale'}">add Sale</router-link>
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Purchase List</h6>
+                    <h6 class="mb-4">sale List</h6>
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">SL</th>
                                 <th scope="col">Invoice</th>
-                                <th scope="col">Supplier</th>
+                                <th scope="col">Customer</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Sub Category</th>
                                 <th  scope="col">Brand</th>
@@ -25,25 +25,24 @@
                                 <th  scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody v-for="(d, i) in purchaseList" :key="i">
+                        <tbody v-for="(d, i) in saleList" :key="i">
                             <tr>
                                 <td scope="row">{{ i + 1 }}</td>
-                                <td>{{ d.invoice_id }}</td>
-                                <td>{{ d.supplier.teamable.name }}</td>
+                                <td>{{ d.invoice_id}}</td>
+                                <td>{{ d.customer.teamable.name}}</td>
                                 <td>{{ d.category.name}}</td>
                                 <td>{{ d.sub_category.name}}</td>
                                 <td>{{ d.brand.name}}</td>
                                 <td>{{ d.product.name }}</td>
                                 <td>{{ d.unit.name }}</td>
-                                <td>{{ d.price }}</td>
+                                 <td>{{ d.sale_price }}</td>
                                 <td>{{ d.quantity }}</td>
-                                <td>{{( d.quantity * d.price) }}</td>
-                                <!-- <td>{{ d.total_price }}</td> -->
+                                <td>{{( d.quantity * d.sale_price) }}</td>
                                 <td>{{ d.payment.method }}</td>
                                 <td>{{ d.date }}</td>
                                 <td width='150px'>
-                                    <button @click="showPurchase(d.id)" class="btn btn-primary">Edit</button>
-                                    <button @click="deletePurchase(d.id)" class="btn btn-danger">Delete</button>
+                                    <button @click="showsale(d.id)" class="btn btn-primary">Edit</button>
+                                    <button @click="deleteEmployee(d.id)" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>
 
@@ -62,34 +61,34 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            purchaseList: [],
+            saleList: [],
             id:0,
         }
     },
     methods: {
-        getPurchase() {
-            axios.get('http://127.0.0.1:8000/api/zahid/purchase')
+        getsale() {
+            axios.get('http://127.0.0.1:8000/api/rubon/sale')
                 .then((res) => {
-                    this.purchaseList = res.data.data
+                    this.saleList = res.data.data
                     // console.log(res.data.data)
                 });
         },
-        showPurchase(id){
-            this.$router.push({name:'editpurchase',params: { id: id }})
+        showsale(id){
+            this.$router.push({name:'editsale',params: { id: id }})
         },
-        deletePurchase(id){
-            axios.delete("http://127.0.0.1:8000/api/zahid/purchase/" + id)
+        deleteEmployee(id){
+            axios.delete("http://127.0.0.1:8000/api/rubon/sale/" + id)
             .then(() => {
-                console.log("Purchase deleted successfully.");
-                this.getPurchase()
+                console.log("sale deleted successfully.");
+                this.getsale()
             })
             .catch((error)=>{
-                console.error("Error deleting Purchase:",error);
+                console.error("Error deleting sale:",error);
             });
         }
     },
     mounted() {
-        this.getPurchase()
+        this.getsale()
     }
 }
 </script>

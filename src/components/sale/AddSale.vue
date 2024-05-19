@@ -3,17 +3,17 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Purchase Form</h6>
+                    <h6 class="mb-4">Sale Form</h6>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Invoice</label>
                         <input type="text" class="form-control" v-model="invoice_id" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
 
-                        <label for="exampleInputEmail1" class="form-label">Supplier Name</label>
-                        <select v-model="supplier_id" class="form-select mb-3" aria-label="Default select example">
-                            <option value="0">Choose Supplier Name</option>
-                            <option v-for="(d, i) in supplierList" :key="i" :value="d.id">{{ d.teamable.name }}</option>
+                        <label for="exampleInputEmail1" class="form-label">customer Name</label>
+                        <select v-model="customer_id" class="form-select mb-3" aria-label="Default select example">
+                            <option value="0">Choose customer Name</option>
+                            <option v-for="(d, i) in customerList" :key="i" :value="d.id">{{ d.teamable.name }}</option>
                         </select>
 
                         <label for="exampleInputEmail1" class="form-label">Category Name</label>
@@ -45,9 +45,9 @@
                             <option v-for="(d, i) in unitList" :key="i" :value="d.id">{{ d.name }}</option>
                         </select>
 
-                        <label for="exampleInputEmail1" class="form-label">Price</label>
+                        <!-- <label for="exampleInputEmail1" class="form-label">Price</label>
                         <input type="number" class="form-control" v-model="price" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
+                            aria-describedby="emailHelp"> -->
 
                         <label for="exampleInputEmail1" class="form-label">Sale Price</label>
                         <input type="number" class="form-control" v-model="sale_price" id="exampleInputEmail1"
@@ -85,7 +85,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            supplierList: [],
+            customerList: [],
             categoryList: [],
             sub_categoryList: [],
             brandList: [],
@@ -93,14 +93,13 @@ export default {
             paymentList: [],
             unitList: [],
             invoice_id: '',
-            supplier_id: 0,
+            customer_id: 0,
             category_id: 0,
             sub_category_id: 0,
             payment_id: 0,
             brand_id: 0,
             product_id: 0,
             unit_id: 0,
-            price: '',
             quantity: '',
             // total_price: '',
             date: '',
@@ -108,6 +107,7 @@ export default {
         }
     },
     methods: {
+        
         getDates() {
             const today = new Date();
             const day = String(today.getDate()).padStart(2, '0');
@@ -120,11 +120,11 @@ export default {
             const a = new Date().getTime().toString().slice(7);
             this.invoice_id="INV:"+a
         },
-        getSupplier() {
-            axios.get("http://127.0.0.1:8000/api/minhaj/supplier")
+        getcustomer() {
+            axios.get("http://127.0.0.1:8000/api/zahid/customer")
                 .then((res) => {
-                    this.supplierList = res.data.data
-                    // console.log(res.data.data)
+                    this.customerList = res.data.data
+                    // console.log(res.data.data)http://127.0.0.1:8000/api/minhaj/customer
                 })
         },
         getCategory() {
@@ -170,28 +170,13 @@ export default {
                 })
         },
         save() {
-            const allData={
-            invoice_id: this.invoice_id,
-            supplier_id:this.supplier_id,
-            category_id:this.category_id,
-            sub_category_id:this.sub_category_id,
-            brand_id:this.brand_id,
-            product_id:this.product_id,
-            unit_id:this.unit_id,
-            price:this.price,
-            sale_price:this.sale_price,
-            quantity:this.quantity,
-            payment_id:this.payment_id,
-            date:this.date
-            }
-            axios.post("http://127.0.0.1:8000/api/zahid/purchase", allData)
+            axios.post("http://127.0.0.1:8000/api/rubon/sale", { invoice_id: this.invoice_id, customer_id:this.customer_id,category_id:this.category_id,sub_category_id:this.sub_category_id,brand_id:this.brand_id,product_id:this.product_id,unit_id:this.unit_id,price:this.price,sale_price:this.sale_price,quantity:this.quantity,payment_id:this.payment_id,date:this.date})
                 .then((response) => {
-                    this.invoice_id='',
-                    this.supplier_id='',
                     this.category_id = '',
                         this.sub_category_id = '',
                         this.brand_id = '',
-                        this.product_id='',
+                        this.invoice_id='',
+                        this.customer_id='',
                         this.unit_id='',
                         this.price='',
                         this.sale_price='',
@@ -199,8 +184,9 @@ export default {
                         // this.total_price='',
                         this.payment_id='',
                         this.date='',
-                        console.log(response.data.data);
-                    this.$router.push({ name: 'purchase' })
+                        this.product_id='',
+                        console.log(response);
+                    this.$router.push({ name: 'sale' })
                 });
         },
     },
@@ -209,7 +195,7 @@ export default {
         this.getSubCategory()
         this.getBrand()
         this.getProduct()
-        this.getSupplier()
+        this.getcustomer()
         this.getInvoice()
         this.getUnit()
         this.getPayment()

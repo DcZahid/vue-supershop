@@ -20,8 +20,14 @@ import AddCustomer from "@/components/customer/AddCustomer.vue";
 import EditCustomer from "@/components/customer/EditCustomer.vue";
 import Unit from "@/components/Unit.vue";
 import Payment from "@/components/Payment.vue";
+
 import PurchaseList from "@/components/purchase/PurchaseList.vue";
 import AddPurchase from "@/components/purchase/AddPurchase.vue";
+import EditPurchase from "@/components/purchase/EditPurchase.vue";
+
+import SaleList from "@/components/sale/SaleList.vue";
+import AddSale from "@/components/sale/AddSale.vue";
+import EditSale from "@/components/sale/EditSale.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -145,6 +151,26 @@ const router = createRouter({
           path: "/addpurchase",
           name: "addpurchase",
           component: AddPurchase,
+        },
+        {
+          path: "/editpurchase/:id",
+          name: "editpurchase",
+          component: EditPurchase,
+        },
+        {
+          path: "/sale",
+          name: "sale",
+          component: SaleList,
+        },
+        {
+          path: "/addsale",
+          name: "addsale",
+          component: AddSale,
+        },
+        {
+          path: "/editsale/:id",
+          name: "editsale",
+          component: EditSale,
         },
         
       ],

@@ -62,6 +62,8 @@
                         class="fa fa-keyboard me-2"></i>Customer List</router-link>
                 <router-link :to="{ name: 'purchase' }" class="nav-item nav-link"><i
                         class="fa fa-keyboard me-2"></i>Purchase List</router-link>
+                <router-link :to="{ name: 'sale' }" class="nav-item nav-link"><i
+                        class="fa fa-keyboard me-2"></i>Sale List</router-link>
                 <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                 <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>

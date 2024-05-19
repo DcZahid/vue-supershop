@@ -3,7 +3,7 @@
         <div class="row g-4">
             <div class="col-sm-12 col-xl-12">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Purchase Form</h6>
+                    <h6 class="mb-4">Purchase Edit Form</h6>
 
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Invoice</label>
@@ -71,7 +71,7 @@
                         <input type="date" class="form-control" v-model="date" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
                     </div>
-                    <button @click="save()" class="btn btn-primary mt-2 active">Save</button>
+                    <button @click="update()" class="btn btn-primary mt-2 active">Update</button>
                     <!-- <button v-else @click="updateCate" class="btn btn-primary">Update</button>  -->
 
                 </div>
@@ -105,21 +105,11 @@ export default {
             // total_price: '',
             date: '',
             sale_price:'',
+            id: this.$route.params.id,
+            url: "http://127.0.0.1:8000/api/zahid/purchase",
         }
     },
     methods: {
-        getDates() {
-            const today = new Date();
-            const day = String(today.getDate()).padStart(2, '0');
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const year = today.getFullYear();
-
-            this.date = `${year}-${month}-${day}`;
-        },
-        getInvoice() {
-            const a = new Date().getTime().toString().slice(7);
-            this.invoice_id="INV:"+a
-        },
         getSupplier() {
             axios.get("http://127.0.0.1:8000/api/minhaj/supplier")
                 .then((res) => {
@@ -169,37 +159,41 @@ export default {
                     // console.log(res.data.data)
                 })
         },
-        save() {
-            const allData={
-            invoice_id: this.invoice_id,
-            supplier_id:this.supplier_id,
-            category_id:this.category_id,
-            sub_category_id:this.sub_category_id,
-            brand_id:this.brand_id,
-            product_id:this.product_id,
-            unit_id:this.unit_id,
-            price:this.price,
-            sale_price:this.sale_price,
-            quantity:this.quantity,
-            payment_id:this.payment_id,
-            date:this.date
-            }
-            axios.post("http://127.0.0.1:8000/api/zahid/purchase", allData)
+        getPurchase(){
+            axios.get(`${this.url}/${this.id}/edit`)
+                .then((res) => {
+                    const dt= res.data.data;
+                    this.invoice_id=dt.invoice_id;
+                    this.supplier_id=dt.supplier_id;
+                    this.category_id=dt.category_id;
+                    this.sub_category_id=dt.sub_category_id;
+                    this.brand_id=dt.brand_id;
+                    this.product_id=dt.product_id;
+                    this.unit_id=dt.unit_id;
+                    this.price=dt.price;
+                    this.sale_price=dt.sale_price;
+                    this.quantity=dt.quantity;
+                    this.payment_id=dt.payment_id;
+                    this.date=dt.date;
+                })
+        },
+        update() {
+            const allData = {
+                invoice_id: this.invoice_id,
+                 supplier_id:this.supplier_id,
+                 category_id:this.category_id,
+                 sub_category_id:this.sub_category_id,
+                 brand_id:this.brand_id,
+                 product_id:this.product_id,
+                 unit_id:this.unit_id,
+                 price:this.price,
+                 sale_price:this.sale_price,
+                 quantity:this.quantity,
+                 payment_id:this.payment_id,
+                 date:this.date
+            };
+            axios.put(`${this.url}/${this.id}`, allData)
                 .then((response) => {
-                    this.invoice_id='',
-                    this.supplier_id='',
-                    this.category_id = '',
-                        this.sub_category_id = '',
-                        this.brand_id = '',
-                        this.product_id='',
-                        this.unit_id='',
-                        this.price='',
-                        this.sale_price='',
-                        this.quantity='',
-                        // this.total_price='',
-                        this.payment_id='',
-                        this.date='',
-                        console.log(response.data.data);
                     this.$router.push({ name: 'purchase' })
                 });
         },
@@ -213,7 +207,7 @@ export default {
         this.getInvoice()
         this.getUnit()
         this.getPayment()
-        this.getDates()
+        this.getPurchase()
     }
 }
 </script>
