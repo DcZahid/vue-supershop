@@ -41,7 +41,7 @@
                                 <td>{{ d.payment.method }}</td>
                                 <td>{{ d.date }}</td>
                                 <td width='150px'>
-                                    <button @click="showsale(d.id)" class="btn btn-primary">Edit</button>
+                                    <button @click="showsale(d.id)" class="btn btn-primary">Edit</button>&nbsp;
                                     <button @click="deleteEmployee(d.id)" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>

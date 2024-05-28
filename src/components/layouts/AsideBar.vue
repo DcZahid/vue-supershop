@@ -1,11 +1,11 @@
 <template>
     <div class="sidebar pe-4 pb-3">
         <nav class="navbar bg-light navbar-light">
-            <a href="index.html" class="navbar-brand mx-4 mb-3">
+            <router-link :to="{name:'content'}" class="navbar-brand mx-4 mb-3">
                 <h3 class="text-primary">
                     <marquee><i class="fa fa-hashtag me-2"></i>MRM POS</marquee>
                 </h3>
-            </a>
+            </router-link>
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
                     <img class="rounded-circle" src="../../assets/img/images.jpeg" alt=""
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="navbar-nav w-100">
-                <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                <router-link :to="{name:'content'}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</router-link>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
                             class="fa fa-laptop me-2"></i>Elements</a>
@@ -35,7 +35,7 @@
                                 class="fa fa-th me-2"></i>Product List</router-link>
 
                         <!-- <router-link :to="{ name: 'product' }" class="dropdown-item">Product List</router-link> -->
-                        <router-link :to="{ name: 'content' }" class="dropdown-item">Buttons</router-link>
+                        <!-- <router-link :to="{ name: 'content' }" class="dropdown-item">Buttons</router-link> -->
                         <a href="typography.html" class="dropdown-item">Typography</a>
                         <a href="element.html" class="dropdown-item">Other Elements</a>
                     </div>
@@ -53,7 +53,8 @@
                 </div>
                 <router-link :to="{ name: 'unit' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Unit List
                     List</router-link>
-                <router-link :to="{ name: 'payment' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Payment List</router-link>
+                <router-link :to="{ name: 'payment' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Payment
+                    List</router-link>
                 <router-link :to="{ name: 'employee' }" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Employee
                     List</router-link>
                 <router-link :to="{ name: 'supplier' }" class="nav-item nav-link"><i
@@ -62,8 +63,18 @@
                         class="fa fa-keyboard me-2"></i>Customer List</router-link>
                 <router-link :to="{ name: 'purchase' }" class="nav-item nav-link"><i
                         class="fa fa-keyboard me-2"></i>Purchase List</router-link>
-                <router-link :to="{ name: 'sale' }" class="nav-item nav-link"><i
-                        class="fa fa-keyboard me-2"></i>Sale List</router-link>
+                <router-link :to="{ name: 'sale' }" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Sale
+                    List</router-link>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                            class="fa fa-laptop me-2"></i>Report</a>
+                    <div class="dropdown-menu bg-transparent border-0">
+                        <router-link :to="{ name: 'storereport' }" class="nav-item nav-link"><i
+                                class="fa fa-th me-2"></i>Store</router-link>
+
+                        <!-- <router-link :to="{ name: 'product' }" class="dropdown-item">Product List</router-link> -->
+                    </div>
+                </div>
                 <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                 <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                 <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>

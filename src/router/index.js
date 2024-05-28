@@ -28,6 +28,7 @@ import EditPurchase from "@/components/purchase/EditPurchase.vue";
 import SaleList from "@/components/sale/SaleList.vue";
 import AddSale from "@/components/sale/AddSale.vue";
 import EditSale from "@/components/sale/EditSale.vue";
+import StoreReport from "@/components/report/StoreReport.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -43,7 +44,7 @@ const router = createRouter({
       component: Dash,
       children: [
         {
-          path: "/content",
+          path: "/dash",
           name: "content",
           component: () => import("../components/Content.vue"),
         },
@@ -171,6 +172,11 @@ const router = createRouter({
           path: "/editsale/:id",
           name: "editsale",
           component: EditSale,
+        },
+        {
+          path: "/storereport",
+          name: "storereport",
+          component: StoreReport,
         },
         
       ],

@@ -27,7 +27,7 @@
                                 <td>{{ d.teamable.phone }}</td>
                                 <td>{{ d.teamable.address }}</td>
                                 <td width='150px'>
-                                    <button @click="showCustomer(d.id)" class="btn btn-primary">Edit</button>
+                                    <button @click="showCustomer(d.id)" class="btn btn-primary">Edit</button>&nbsp;
                                     <button @click="deleteCustomer(d.id)" class="btn btn-danger">Delete</button>
                                 </td>
                             </tr>

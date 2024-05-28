@@ -49,10 +49,6 @@
                         <input type="number" class="form-control" v-model="price" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
 
-                        <label for="exampleInputEmail1" class="form-label">Sale Price</label>
-                        <input type="number" class="form-control" v-model="sale_price" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
-
                         <label for="exampleInputEmail1" class="form-label">Quantity</label>
                         <input type="number" class="form-control" v-model="quantity" id="exampleInputEmail1"
                             aria-describedby="emailHelp">
@@ -104,7 +100,6 @@ export default {
             quantity: '',
             // total_price: '',
             date: '',
-            sale_price:'',
         }
     },
     methods: {
@@ -179,7 +174,6 @@ export default {
             product_id:this.product_id,
             unit_id:this.unit_id,
             price:this.price,
-            sale_price:this.sale_price,
             quantity:this.quantity,
             payment_id:this.payment_id,
             date:this.date
@@ -194,7 +188,6 @@ export default {
                         this.product_id='',
                         this.unit_id='',
                         this.price='',
-                        this.sale_price='',
                         this.quantity='',
                         // this.total_price='',
                         this.payment_id='',
